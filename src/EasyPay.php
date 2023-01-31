@@ -1,6 +1,6 @@
 <?php 
 
-namespace Payline\EasyPay
+namespace Payline\EasyPay;
 
 class EasyPay {
 
