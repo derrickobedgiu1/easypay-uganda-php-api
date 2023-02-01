@@ -38,7 +38,7 @@ Below is the default way of passing in your credentials to the SDK. The example 
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\Easypay;
+use Payline\Easypay\EasyPay;
 
 //To use the Utilities Class
 use Payline\Easypay\Utilities;
@@ -64,7 +64,7 @@ This is useful when you want to know your current balance at EasyPay. You can us
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\Easypay;
+use Payline\Easypay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -85,7 +85,7 @@ This is useful for returning the status of the mobile money transaction based on
 <?php
 require 'vendor/autoload.php';
 
-use Payline\Easypay\Easypay;
+use Payline\Easypay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -109,7 +109,7 @@ This is useful when you want to move funds from your customer's mobile money acc
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\Easypay;
+use Payline\Easypay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -144,7 +144,7 @@ This is useful in sending mobile money from your EasyPay account to the specifie
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\Easypay;
+use Payline\Easypay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -162,5 +162,40 @@ $send = $easyPay->sendPayment($amount, $currency, $phone, $reference);
 echo "<pre>";
 echo print_r($send);
 echo "</pre>";
+?>
+```
+### Validate YAKA Number obtained from your Customer
+This is helpful when you want to check and validate the user's provided account number with the System.
+```php
+<?php
+// Require the Composer autoloader.
+require 'vendor/autoload.php';
+
+//To use the Utilities Class
+use Payline\Easypay\Utilities;
+
+$username = "Your API ClientId";
+$password = "Your API ClientSecret";
+
+//Pass the Credentials in the Classes you'll be using
+$utilities = new Utilities($username,$password);
+
+$ccount = "";
+
+//amount is optional. If you pass it in the method, EasyPay will tell you the charge you will incur and check whether you have enough balance to pay it
+$amount = "";
+
+$validate = $utilities->validateYakaNumber($account,$amount);
+echo "<pre>";
+echo print_r($validate);
+echo "</pre>";
+?>
+```
+### Pay for YAKA/ UMEME Uganda
+This is useful when a user wants to pay the actual bill in this case yaka or umeme postpaid Uganda.
+```php
+<?php
+//to be continued
+
 ?>
 ```
