@@ -112,11 +112,20 @@ $easyPay = new EasyPay($username,$pasword);
 //Get the Payment Details
 $amount = "";
 $currency = "";
-$phone = "";
+$phone = "256******";
 $reference = "";
 $reason = "";
 
+try {
 //Request Payment from User
-$pay = $easyPay->requestPayment($amount, $currency, $phone, $reference, $reason);
+$pay = $easyPay->requestPayment($amount,$currency,$phone,$reference,$reason);
+}
+catch (\Exception $e) {
+    //Since EasyPay server isn't returning payload for initiated payment request, we'll wait for Guzzle timeout and check for reference we passed if the payment is pending or successful
+    $checkStatus = $easyPay->fetchPaymentStatus($reference);
+    echo "<pre>";
+    echo print_r($checkStatus);
+    echo "</pre>";
+}
 ?>
 ```
