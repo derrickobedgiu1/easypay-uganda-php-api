@@ -80,14 +80,16 @@ echo "</pre>";
 ?>
 ```
 <u>Success Result</u>
-```(
+```
+(
     [success] => 1
     [data] => 15000
     [currencyCode] => UGX
 )
 ```
 <u>Failure Result</u>
-```(
+```
+(
     [success] => 1
     [errormsg] => API Authentication failed
 )
