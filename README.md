@@ -1,5 +1,5 @@
 # EasyPay Uganda PHP Payment API
-
+![](https://i.imgur.com/hSW9eEi.png)
 ## What is EasyPay Uganda Payment API
 Easypay Mobile Wallet is owned by Payline Holdings (U) Ltd.
 
