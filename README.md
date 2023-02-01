@@ -79,21 +79,29 @@ echo print_r($bal);
 echo "</pre>";
 ?>
 ```
-<u>Success Result</u>
+### Get Payment Reference Status from EasyPay
+This is useful for returning the status of the mobile money transaction based on the reference you provided for a customer during payment request from their phones. You can use this method if you're unable to make use of the Webhook/Instant Payment Notification (IPN)
+```php
+<?php
+require 'vendor/autoload.php';
+
+use Payline\Easypay\Easypay;
+
+$username = "Your API ClientId";
+$password = "Your API ClientSecret";
+
+$easyPay = new EasyPay($username,$pasword);
+
+//Provide the reference number
+$reference = "";
+
+$status = $easyPay->fetchPaymentStatus($reference);
+echo "<pre>";
+echo print_r($checkStatus);
+echo "</pre>";
+?>
 ```
-(
-    [success] => 1
-    [data] => 15000
-    [currencyCode] => UGX
-)
-```
-<u>Failure Result</u>
-```
-(
-    [success] => 1
-    [errormsg] => API Authentication failed
-)
-```
+
 ### Request Money from Mobile User
 This is useful when you want to move funds from your customer's mobile money account into your EasyPay wallet. MTN, Airtel, Africell and UTL m-sente supported.
 ```php
@@ -127,5 +135,32 @@ catch (\Exception $e) {
     echo print_r($checkStatus);
     echo "</pre>";
 }
+?>
+```
+### Send Payment to Mobile User
+This is useful in sending mobile money from your EasyPay account to the specified mobile money phone number. Currently only MTN, Airtel, Africell and UTL M-Sente are supported.
+```php
+<?php
+require 'vendor/autoload.php';
+
+//To use the EasyPay Class
+use Payline\Easypay\Easypay;
+
+$username = "Your API ClientId";
+$password = "Your API ClientSecret";
+
+//Pass the Credentials in the Classes you'll be using
+$easyPay = new EasyPay($username,$pasword);
+
+//Feed the payment details including the receiver
+$amount = "";
+$currency = "";
+$phone = "256******";
+$reference = "";
+
+$send = $easyPay->sendPayment($amount, $currency, $phone, $reference);
+echo "<pre>";
+echo print_r($send);
+echo "</pre>";
 ?>
 ```
