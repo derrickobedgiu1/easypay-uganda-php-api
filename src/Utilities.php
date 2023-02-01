@@ -4,62 +4,77 @@ namespace Payline\EasyPay;
 
 class Utilities extends EasyPay {
     public function validateYakaNumber($account, $amount = null) {
-        $params = [
-          'provider' => 'umeme',
-          'account' => $account
-        ];
-    
-        if ($amount) {
-          $params['amount'] = $amount;
+        try {
+            $params = [
+              'provider' => 'umeme',
+              'account' => $account
+            ];
+        
+            if ($amount) {
+              $params['amount'] = $amount;
+            }
+        
+            return $this->makeRequest('paybilladvice', $params);
+        } catch (\Exception $e) {
+            return "An error occured: " . $e->getMessage();
         }
-    
-        return $this->makeRequest('paybilladvice', $params);
-      }
-
+    }
 
     public function payForYaka($account, $amount, $phone, $reference) {
-        return $this->makeRequest("paybill", [
-          'provider' => 'umeme',
-          'account' => $account,
-          'amount' => $amount,
-          'phone' => $phone,
-          'reference' => $reference
-        ]);
-      }
-
+        try {
+            return $this->makeRequest("paybill", [
+              'provider' => 'umeme',
+              'account' => $account,
+              'amount' => $amount,
+              'phone' => $phone,
+              'reference' => $reference
+            ]);
+        } catch (\Exception $e) {
+            return "An error occured: " . $e->getMessage();
+        }
+    }
 
     public function checkYakaPaymentStatus($reference) {
-        return $this->makeRequest('paybillstatus', [
-          'provider' => 'umeme',
-          'reference' => $reference,
-        ]);
-      }
-
+        try {
+            return $this->makeRequest('paybillstatus', [
+              'provider' => 'umeme',
+              'reference' => $reference,
+            ]);
+        } catch (\Exception $e) {
+            return "An error occured: " . $e->getMessage();
+        }
+    }
 
     public function televisionBundles($provider) {
-
-        $providers = array("gotv", "dstv");
-        if (!in_array($provider, $providers)) {
-            return "Invalid provider. Available options are: " . implode(", ", $providers);
+        try {
+            $providers = array("gotv", "dstv");
+            if (!in_array($provider, $providers)) {
+                return "Invalid provider. Available options are: " . implode(", ", $providers);
+            }
+    
+            $requestData = [
+              'provider' => $provider,
+            ];
+            return $this->makeRequest("paybillbundles", $requestData);
+        } catch (\Exception $e) {
+            return "An error occured: " . $e->getMessage();
         }
-
-        $requestData = [
-          'provider' => $provider,
-        ];
-        return $this->makeRequest("paybillbundles", $requestData);
-      }
-
+    }
 
     public function validateTelevisionProvider($provider, $account) {
-        $requestData = [
-          'provider' => $provider,
-          'account' => $account,
-        ];
-        return $this->makeRequest("paybilladvice", $requestData);
-      }
-
+        try {
+            $requestData = [
+              'provider' => $provider,
+              'account' => $account,
+            ];
+            return $this->makeRequest("paybilladvice", $requestData);
+        } catch (\Exception $e) {
+            return "An error occured: " . $e->getMessage();
+        }
+    }
 
     public function payTelevision($params) {
+        try {
         $requestData = [
         'provider' => $params['provider'],
         'phone' => $params['phone'],
@@ -69,50 +84,69 @@ class Utilities extends EasyPay {
         'reference' => $params['reference'],
         ];
         return $this->makeRequest("paybill", $requestData);
+        } catch (\Exception $e) {
+        return $e->getMessage();
+        }
         }
 
+        public function checkTvPayment($provider, $reference) {
+        try {
+        $requestData = [
+        'provider' => $provider,
+        'reference' => $reference,
+        ];
+        return $this->makeRequest("paybillstatus", $requestData);
+        } catch (\Exception $e) {
+        return $e->getMessage();
+        }
+        }
 
-    public function checkTvPayment($provider, $reference) {
-            $requestData = [
-              'provider' => $provider,
-              'reference' => $reference,
-            ];
-            return $this->makeRequest("paybillstatus", $requestData);
-          }
+        public function nwscAreas() {
+        try {
+        $requestData = [
+        'provider' => 'nwsc',
+        ];
+        return $this->makeRequest("paybillbundles", $requestData);
+        } catch (\Exception $e) {
+        return $e->getMessage();
+        }
+        }
 
+        public function validateNwscNumber($account, $location) {
+        try {
+        $requestData = [
+        'provider' => 'nwsc',
+        'account' => $account,
+        'location' => $location,
+        ];
+        return $this->makeRequest("paybilladvice", $requestData);
+        } catch (\Exception $e) {
+        return $e->getMessage();
+        }
+        }
 
-    public function nwscAreas() {
-            $requestData = [
-              'provider' => 'nwsc',
-            ];
-            return $this->makeRequest("paybillbundles", $requestData);
-          }
+        public function payNwsc($phone, $amount, $account, $location, $reference) {
+        try {
+        $requestData = [
+        'provider' => "nwsc",
+        'phone' => $phone,
+        'amount' => $amount,
+        'account' => $account,
+        'location' => $location,
+        'reference' => $reference,
+        ];
+        return $this->makeRequest("paybill", $requestData);
+        } catch (\Exception $e) {
+        return $e->getMessage();
+        }
+        }
 
+        public function checkNwscPaymentStatus($reference) {
+        try {
+        return $this->makeRequest("paybillstatus", $reference);
+        } catch (\Exception $e) {
+        return $e->getMessage();
+        }
+        }
 
-    public function validateNwscNumber($account, $location) {
-            $requestData = [
-              'provider' => 'nwsc',
-              'account' => $account,
-              'location' => $location,
-            ];
-            return $this->makeRequest("paybilladvice", $requestData);
-          }
-
-
-    public function payNwsc($phone, $amount, $account, $location, $reference) {
-            $requestData = [
-              'provider' => "nwsc",
-              'phone' => $phone,
-              'amount' => $amount,
-              'account' => $account,
-              'location' => $location,
-              'reference' => $reference,
-            ];
-            return $this->makeRequest("paybill", $requestData);
-          }
-
-
-    public function checkNwscPaymentStatus($reference) {
-            return $this->makeRequest("paybillstatus", $reference);
-          }
 }

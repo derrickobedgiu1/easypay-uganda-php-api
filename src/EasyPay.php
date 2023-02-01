@@ -2,6 +2,8 @@
 
 namespace Payline\EasyPay;
 
+use GuzzleHttp\Client;
+
 class EasyPay {
 
   private $baseUrl = 'https://www.easypay.co.ug/api/';
@@ -12,62 +14,85 @@ class EasyPay {
   public function __construct($username, $password) {
     $this->username = $username;
     $this->password = $password;
-    $this->client = new GuzzleHttp\Client();
+    $this->client = new Client();
   }
 
   public function makeRequest($action, $params = []) {
-    $requestData = [
-      'username' => $this->username,
-      'password' => $this->password,
-      'action' => $action,
-    ];
-    $requestData = array_merge($requestData, $params);
-    $response = $this->client->post($this->baseUrl, [
-      'json' => $requestData
-    ]);
-    return json_decode($response->getBody(), true);
+    try {
+      $requestData = [
+        'username' => $this->username,
+        'password' => $this->password,
+        'action' => $action,
+      ];
+      $requestData = array_merge($requestData, $params);
+      $response = $this->client->post($this->baseUrl, [
+        'json' => $requestData
+      ]);
+      return json_decode($response->getBody(), true);
+    } catch (Exception $e) {
+      return [
+        'error' => $e->getMessage()
+      ];
+    }
   }
 
 
   public function requestPayment($amount, $currency, $phone, $reference, $reason) {
-    $params = [
-      'amount' => $amount,
-      'currency' => $currency,
-      'phone' => $phone,
-      'reference' => $reference,
-      'reason' => $reason
-    ];
-    return $this->makeRequest('mmdeposit', $params);
+    try {
+      $params = [
+        'amount' => $amount,
+        'currency' => $currency,
+        'phone' => $phone,
+        'reference' => $reference,
+        'reason' => $reason
+      ];
+      return $this->makeRequest('mmdeposit', $params);
+    } catch (Exception $e) {
+      return [
+        'error' => $e->getMessage()
+      ];
+    }
   }
 
 
   public function sendPayment($amount, $currency, $phone, $reference) {
-    $params = [
-      'amount' => $amount,
-      'currency' => $currency,
-      'phone' => $phone,
-      'reference' => $reference
-    ];
-    return $this->makeRequest('mmpayout', $params);
+    try {
+      $params = [
+        'amount' => $amount,
+        'currency' => $currency,
+        'phone' => $phone,
+        'reference' => $reference
+      ];
+      return $this->makeRequest('mmpayout', $params);
+    } catch (Exception $e) {
+      return [
+        'error' => $e->getMessage()
+      ];
+    }
   }
 
 
   public function fetchPaymentStatus($reference) {
-    $params = [
-      'reference' => $reference
-    ];
-    return $this->makeRequest('mmstatus', $params);
+    try {
+      $params = [
+        'reference' => $reference
+      ];
+      return $this->makeRequest('mmstatus', $params);
+    } catch (Exception $e) {
+      return [
+        'error' => $e->getMessage()
+      ];
+    }
   }
 
 
   public function checkBalance() {
-    return $this->makeRequest('checkbalance');
+    try {
+      return $this->makeRequest('checkbalance');
+    } catch (Exception $e) {
+      return [
+        'error' => $e->getMessage()
+      ];
+    }
   }
-
-
-  
-
 }
-
-
-
