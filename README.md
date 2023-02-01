@@ -1,13 +1,13 @@
 # EasyPay Uganda PHP Payment API
 ![](https://i.imgur.com/hSW9eEi.png)
 ## What is EasyPay Uganda Payment API
-Easypay Mobile Wallet is owned by Payline Holdings (U) Ltd.
+EasyPay Mobile Wallet is owned by Payline Holdings (U) Ltd.
 
 Payline Holdings is one of Uganda’s leading and advanced providers of Online Payment Solutions. Payline Holdings brings together more than 20 years of rich industry experience extrapolating its flexible and entrepreneurial services to clients. We are passionate about client satisfaction, which underpins our delivery framework to provide the highest quality in technology service
 
 ## Getting Started with EasyPay Uganda PHP API
 
-1. Easypay account; First things first, you need to register for an easypay account. Registration is free and painless. [Register for an easypay account](https://www.easypay.co.ug/kb/knowledge-base/how-to-register-for-an-easypay-account/ "Register for an easypay account"). Once you have registered and signed in, you will have to enable your API from within the app, so as you can get your credentials in real time.
+1. EasyPay account; First things first, you need to register for an easypay account. Registration is free and painless. [Register for an easypay account](https://www.easypay.co.ug/kb/knowledge-base/how-to-register-for-an-easypay-account/ "Register for an easypay account"). Once you have registered and signed in, you will have to enable your API from within the app, so as you can get your credentials in real time.
     
 2. The API is very simple and live so there is no sandbox environment. This helps you get integrated in a matter of minutes,test and get the feel of the API. Then Gotcha.  By default new accounts are limited to certain amount of money worth of transactions they can make depending on the category of requests they're making. These are intended for testing purposes. To remove this limitation, you will have to contact them with your company details (KYC) via our inbuilt chat within app.
 
@@ -38,13 +38,13 @@ Below is the default way of passing in your credentials to the SDK. The example 
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 //To use the Utilities Class
-use Payline\Easypay\Utilities;
+use Payline\EasyPay\Utilities;
 
 //To use the AirtimeBundle Class
-use Payline\Easypay\AirtimeBundle;
+use Payline\EasyPay\AirtimeBundle;
 
 
 $username = "Your API ClientId";
@@ -64,7 +64,7 @@ This is useful when you want to know your current balance at EasyPay. You can us
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -85,7 +85,7 @@ This is useful for returning the status of the mobile money transaction based on
 <?php
 require 'vendor/autoload.php';
 
-use Payline\Easypay\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -109,7 +109,7 @@ This is useful when you want to move funds from your customer's mobile money acc
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -144,7 +144,7 @@ This is useful in sending mobile money from your EasyPay account to the specifie
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\Easypay\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -172,7 +172,7 @@ This is helpful when you want to check and validate the user's provided account 
 require 'vendor/autoload.php';
 
 //To use the Utilities Class
-use Payline\Easypay\Utilities;
+use Payline\EasyPay\Utilities;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
