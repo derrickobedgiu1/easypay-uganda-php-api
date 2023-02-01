@@ -191,7 +191,7 @@ echo print_r($validate);
 echo "</pre>";
 ?>
 ```
-### Pay for YAKA/ UMEME Uganda
+### Pay for Yaka/ UMEME Uganda
 This is useful when a user wants to pay the actual bill in this case yaka or umeme postpaid Uganda.
 ```php
 <?php
@@ -199,3 +199,5 @@ This is useful when a user wants to pay the actual bill in this case yaka or ume
 
 ?>
 ```
+### Disclaimer
+This package is not affiliated or endorsed by the official EasyPay Uganda Company. The use of EasyPay Uganda's logos and screenshots on the Payline and EasyPay website is for illustration purposes only and does not imply any official endorsement. The contents of this package are not officially maintained or supported by EasyPay Uganda.
