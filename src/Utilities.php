@@ -1,6 +1,6 @@
 <?php
 
-namespace Payline\EasyPay;
+namespace Payline;
 
 class Utilities extends EasyPay {
     public function validateYakaNumber($account, $amount = null) {

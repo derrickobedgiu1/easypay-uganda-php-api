@@ -1,6 +1,6 @@
 <?php
 
-namespace Payline\EasyPay;
+namespace Payline;
 
 class AirtimeBundles extends EasyPay {
     public function fetchBundles($provider) {

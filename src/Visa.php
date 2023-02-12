@@ -1,6 +1,6 @@
 <?php
 
-namespace Payline\EasyPay;
+namespace Payline;
 
 Class Visa extends EasyPay{
 
@@ -23,7 +23,7 @@ Class Visa extends EasyPay{
 			"phone" =>$params['phone'],
 			"reference" =>$params['reference'],
 			"reason" =>$params['reason']
-		]
+			];
 			return $this->makeRequest("cardpayment",$visaDetails);
 		}
 		catch(\Exception $e){

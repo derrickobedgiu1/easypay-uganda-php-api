@@ -24,7 +24,7 @@ Add the following lines to your `composer.json`:
     ],
 "require": {
     //Your libraries,
-    "derrickobedgiu1/whatsapp-cloud-api": "*"
+    "derrickobedgiu1/easypay-uganda-php-api": "*"
 }
 ```
 Delete your `composer.lock` file from your project then run ```composer install``` to reinstall your packages including this SDK
@@ -38,13 +38,13 @@ Below is the default way of passing in your credentials to the SDK. The example 
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay\EasyPay;
+use Payline\EasyPay;
 
 //To use the Utilities Class
-use Payline\EasyPay\Utilities;
+use Payline\Utilities;
 
 //To use the AirtimeBundle Class
-use Payline\EasyPay\AirtimeBundle;
+use Payline\AirtimeBundle;
 
 
 $username = "Your API ClientId";
@@ -64,7 +64,7 @@ This is useful when you want to know your current balance at EasyPay. You can us
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay\EasyPay;
+use Payline\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -85,7 +85,7 @@ This is useful for returning the status of the mobile money transaction based on
 <?php
 require 'vendor/autoload.php';
 
-use Payline\EasyPay\EasyPay;
+use Payline\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -109,7 +109,7 @@ This is useful when you want to move funds from your customer's mobile money acc
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay\EasyPay;
+use Payline\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
@@ -144,7 +144,7 @@ This is useful in sending mobile money from your EasyPay account to the specifie
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay\EasyPay;
+use Payline\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
