@@ -14,7 +14,7 @@ class EasyPay {
   public function __construct($username, $password) {
     $this->username = $username;
     $this->password = $password;
-    $this->client = new Client(['timeout' => 10]);
+    $this->client = new Client(['timeout' => 15]);
   }
 
   public function makeRequest($action, $params = []) {
