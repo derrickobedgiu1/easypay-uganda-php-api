@@ -1,6 +1,6 @@
 <?php 
 
-namespace Payline;
+namespace Payline\EasyPay;
 
 use GuzzleHttp\Client;
 

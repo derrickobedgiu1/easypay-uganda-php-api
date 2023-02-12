@@ -1,6 +1,6 @@
 <?php
 
-namespace Payline;
+namespace Payline\EasyPay;
 
 Class Visa extends EasyPay{
 

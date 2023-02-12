@@ -38,13 +38,13 @@ Below is the default way of passing in your credentials to the SDK. The example 
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 //To use the Utilities Class
-use Payline\Utilities;
+use Payline\EasyPay\Utilities;
 
 //To use the AirtimeBundle Class
-use Payline\AirtimeBundle;
+use Payline\EasyPay\AirtimeBundle;
 
 
 $username = "Your API ClientId";
@@ -64,13 +64,13 @@ This is useful when you want to know your current balance at EasyPay. You can us
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
 
 //Pass the Credentials in the Classes you'll be using
-$easyPay = new EasyPay($username,$pasword);
+$easyPay = new EasyPay($username,$password);
 
 $balance = $easyPay->checkBalance();
 //print the arrays returned
@@ -85,12 +85,12 @@ This is useful for returning the status of the mobile money transaction based on
 <?php
 require 'vendor/autoload.php';
 
-use Payline\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
 
-$easyPay = new EasyPay($username,$pasword);
+$easyPay = new EasyPay($username,$password);
 
 //Provide the reference number
 $reference = "";
@@ -109,13 +109,13 @@ This is useful when you want to move funds from your customer's mobile money acc
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
 
 //Pass the Credentials in the Classes you'll be using
-$easyPay = new EasyPay($username,$pasword);
+$easyPay = new EasyPay($username,$password);
 
 //Get the Payment Details
 $amount = "";
@@ -144,13 +144,13 @@ This is useful in sending mobile money from your EasyPay account to the specifie
 require 'vendor/autoload.php';
 
 //To use the EasyPay Class
-use Payline\EasyPay;
+use Payline\EasyPay\EasyPay;
 
 $username = "Your API ClientId";
 $password = "Your API ClientSecret";
 
 //Pass the Credentials in the Classes you'll be using
-$easyPay = new EasyPay($username,$pasword);
+$easyPay = new EasyPay($username,$password);
 
 //Feed the payment details including the receiver
 $amount = "";
